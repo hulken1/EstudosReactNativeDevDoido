@@ -16,7 +16,7 @@ if(!userExiste){
 }
 next();
     } catch(e){
-      console.log(req.usuarioLogado);
+      console.log(token);
 res.status(401).send({message:'Token é inválido'});
 return;
     }
