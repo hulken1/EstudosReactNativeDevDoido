@@ -5,6 +5,7 @@ const usuario = require('../models/user-model');
 module.exports = async (req,res,next) =>{
   const authHeader = req.headers.authorization;
   const [,token] = authHeader.split(' ');
+  
   if(token){
     try{
 let decoded = await jwt.verify(token,variables.Security.secretKey);
@@ -16,7 +17,6 @@ if(!userExiste){
 }
 next();
     } catch(e){
-      console.log(token);
 res.status(401).send({message:'Token é inválido'});
 return;
     }
